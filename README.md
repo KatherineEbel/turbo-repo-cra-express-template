@@ -4,7 +4,7 @@ This is a modified version of the Docker starter Turborepo.
 
 ## What's inside?
 
-This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
+This turborepo uses [yarn](https://yarnpkg.com/) as a package manager. It includes the following packages/apps:
 
 ### Apps and Packages
 
