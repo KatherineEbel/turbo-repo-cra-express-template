@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { ReactComponent as Logo } from 'ui/src/assets/logo.svg'
-
-const API_HOST = process.env.REACT_APP_API_HOST || "http://localhost:3001";
+import { ReactComponent as Logo } from 'assets/logo.svg'
 
 export default function Web() {
   const [name, setName] = useState<string>("");
@@ -20,7 +18,7 @@ export default function Web() {
     e.preventDefault();
 
     try {
-      const result = await fetch(`${API_HOST}/message/${name}`);
+      const result = await fetch(`${process.env.REACT_APP_API_HOST}/message/${name}`);
       const response = await result.json();
       setResponse(response);
     } catch (err) {

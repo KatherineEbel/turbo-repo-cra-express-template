@@ -2,7 +2,7 @@ FROM node:alpine AS builder
 RUN apk update
 # Set working directory
 WORKDIR /app
-RUN yarn global add turbo
+RUN npm install -g turbo
 COPY . .
 RUN turbo prune --scope=api --docker
 
@@ -11,13 +11,13 @@ FROM node:alpine AS installer
 RUN apk update
 WORKDIR /app
 COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/yarn.lock ./yarn.lock
+COPY --from=builder /app/out/package-lock.lock ./package-lock.json
 COPY --from=builder /app/out/full/ .
 COPY .gitignore .gitignore
 COPY turbo.json turbo.json
 
-RUN yarn install
-RUN yarn turbo run build --filter=api...
+RUN npm install
+RUN npm turbo run build --filter=api...
 
 FROM node:alpine AS runner
 WORKDIR /app

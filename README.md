@@ -1,17 +1,17 @@
 # Turborepo Docker starter
 
-This is an official Docker starter Turborepo.
+This is a modified version of the Docker starter Turborepo.
 
 ## What's inside?
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
 
 ### Apps and Packages
 
-- `web`: a [Next.js](https://nextjs.org) app
+- `web`: a [Create React App](https://create-react-app.dev/) app
 - `api`: an [Express](https://expressjs.com/) server
 - `ui`: ui: a React component library
-- `eslint-config-custom`: `eslint` configurations for client side applications (includes `eslint-config-next` and `eslint-config-prettier`)
+- `eslint-config-custom`: `eslint` configurations for client side applications (includes `eslint-config-custom` and `eslint-config-prettier`)
 - `eslint-config-custom-server`: `eslint` configurations for server side applications (includes `eslint-config-next` and `eslint-config-prettier`)
 - `scripts`: Jest configurations
 - `logger`: Isomorphic logger (a small wrapper around console.log)
@@ -52,3 +52,4 @@ This Turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Jest](https://jestjs.io) test runner for all things JavaScript
 - [Prettier](https://prettier.io) for code formatting
+- [Husky](https://typicode.github.io/husky/) for git hooks
