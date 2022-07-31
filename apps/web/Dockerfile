@@ -1,32 +1,27 @@
-FROM node:alpine AS base
+FROM node:alpine AS builder
 RUN apk update
-RUN npm install -g turbo
-
-FROM base as pruner
 # Set working directory
 WORKDIR /app
+RUN yarn global add turbo
 COPY . .
-RUN turbo prune --filter=web
+RUN turbo prune --scope=web --docker
 
 # Add lockfile and package.json's of isolated subworkspace
-FROM pruner AS installer
+FROM node:alpine AS installer
+RUN apk update
 WORKDIR /app
-COPY --from=builder nginx/default.conf .
 COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/package-lock.json ./package-lock.json
-RUN npm install
-
-# Copy source code of pruned subworkspace and build
-
-FROM installer as builder
-WORKDIR /app
-COPY --from=installer /app/ .
+COPY --from=builder /app/out/yarn.lock ./yarn.lock
 COPY --from=builder /app/out/full/ .
-RUN turbo run build --filter=web
+COPY .gitignore .gitignore
+COPY turbo.json turbo.json
+
+RUN yarn install
+RUN yarn turbo run build --scope=web...
 
 
 FROM nginx
-EXPOSE 3000
 WORKDIR /app
-COPY --from=installer nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/out/full /usr/share/nginx/html
+EXPOSE 3000
+COPY --from=installer /app/apps/web/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=installer /app/apps/web/build /usr/share/nginx/html
