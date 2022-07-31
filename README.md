@@ -1,4 +1,4 @@
-# Turborepo Docker starter
+# Turborepo Docker starter with CRA
 
 This is a modified version of the Docker starter Turborepo.
 
@@ -11,8 +11,8 @@ This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It inclu
 - `web`: a [Create React App](https://create-react-app.dev/) app
 - `api`: an [Express](https://expressjs.com/) server
 - `ui`: ui: a React component library
-- `eslint-config-custom`: `eslint` configurations for client side applications (includes `eslint-config-custom` and `eslint-config-prettier`)
-- `eslint-config-custom-server`: `eslint` configurations for server side applications (includes `eslint-config-next` and `eslint-config-prettier`)
+- `eslint-config-custom-react`: `eslint` configurations for client side applications (includes `eslint-config-custom-react` and `eslint-config-prettier`)
+- `eslint-config-custom-server`: `eslint` configurations for server side applications (`eslint-config-prettier`)
 - `scripts`: Jest configurations
 - `logger`: Isomorphic logger (a small wrapper around console.log)
 - `tsconfig`: tsconfig.json;s used throughout the monorepo
