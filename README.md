@@ -1,6 +1,7 @@
-# Turborepo Docker starter with CRA
+# Turborepo Docker starter with CRA and Storybook
 
 This is a modified version of the Docker starter Turborepo.
+I changed out NextJS for Create React App. I also added Storybook.
 
 ## What's inside?
 
