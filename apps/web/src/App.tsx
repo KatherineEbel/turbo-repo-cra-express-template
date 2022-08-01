@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { ReactComponent as Logo } from 'assets/logo.svg'
+import React, { useEffect, useState } from "react";
 
-export default function Web() {
+export default function App() {
   const [name, setName] = useState<string>("");
   const [response, setResponse] = useState<{ message: string } | null>(null);
   const [error, setError] = useState<string | undefined>();
@@ -33,9 +32,6 @@ export default function Web() {
 
   return (
     <div>
-      <div style={{width: '50px'}}>
-        <Logo/>
-      </div>
       <h1>Web</h1>
       <form onSubmit={onSubmit}>
         <label htmlFor="name">Name </label>
